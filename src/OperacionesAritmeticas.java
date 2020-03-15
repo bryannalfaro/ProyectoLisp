@@ -14,11 +14,11 @@ public class OperacionesAritmeticas {
 	        String signo = String.valueOf(Lista.get(0));
 	        
 	        for (int i = 1; i < Lista.size(); i++){
-	            if(Lista.get(i) instanceof Integer || Lista.get(i) instanceof Double ){
+	            if(Lista.get(i).getClass()==Integer.class || Lista.get(i).getClass()==Double.class ){
 	                
 	                resultadoStack.push(Double.parseDouble(Lista.get(i).toString()));
 	                
-	            }else if(Lista.get(i) instanceof ArrayList){ 
+	            }else if(Lista.get(i).getClass()==ArrayList.class){ 
 	                resultadoStack.push(calcular((List)Lista.get(i)));
 	            }
 	        }

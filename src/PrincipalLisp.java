@@ -76,14 +76,14 @@ public class PrincipalLisp {
 			                tempIns.add(archivo.getTarea(archivo.getToken(" \n", instruccions.get(control).toString() )));
 			                
 			            }
-			            for (Object i: tempIns) {
+			            for (int i=0;i<tempIns.size();i++) {
 
 			                List instruccion = null;
 			                
-			                if(i instanceof ArrayList){
-			                    instruccion = (List) i;
+			                if(tempIns.get(i).getClass()==(ArrayList.class)){
+			                    instruccion = (List) tempIns.get(i);
 			                }
-			                else if(i instanceof String){
+			                else if(tempIns.get(i).getClass()==String.class){
 			                    instruccion = Arrays.asList(tempIns.toString().split(" "));
 			                   
 			                }
