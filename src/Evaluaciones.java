@@ -50,4 +50,13 @@ public class Evaluaciones {
         return null;
     }
     
+    public void quoteShow(List instrucciones) {
+    	String texto="";
+    	for(int i=1;i<instrucciones.size();i++) {
+    		
+    		texto+=instrucciones.get(i)+" ";
+    		System.out.println(texto);
+    	}
+    }
+    
 }

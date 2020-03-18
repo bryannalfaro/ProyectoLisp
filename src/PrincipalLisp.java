@@ -132,6 +132,8 @@ public class PrincipalLisp {
 			                
 				            }else if (instruccion.contains("cond")){
 				                	new Evaluaciones().cond(instruccion);
+				            }else if(instruccion.contains("quote")) {
+				            	new Evaluaciones().quoteShow(instruccion);
 				            }
 			                
 			                }}catch(Exception e){
