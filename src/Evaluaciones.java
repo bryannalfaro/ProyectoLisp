@@ -59,4 +59,14 @@ public class Evaluaciones {
     	}
     }
     
+    public void setqEstablished(List instrucciones) {
+    	
+    }
+    
+    public void firstOfList(List instrucicones) {
+    	String m="";
+    	m=instrucicones.get(1).toString();
+    	System.out.println(m);
+    }
+    
 }

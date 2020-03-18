@@ -134,6 +134,11 @@ public class PrincipalLisp {
 				                	new Evaluaciones().cond(instruccion);
 				            }else if(instruccion.contains("quote")) {
 				            	new Evaluaciones().quoteShow(instruccion);
+				            }else if(instruccion.contains("setq")) {
+				            	new Evaluaciones().setqEstablished(instruccion);
+				            }
+				            else if(instruccion.contains("first")) {
+				            	new Evaluaciones().firstOfList(instruccion);
 				            }
 			                
 			                }}catch(Exception e){
