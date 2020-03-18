@@ -91,12 +91,49 @@ public class PrincipalLisp {
 			                     instruccion = tempIns;
 			                }
 			                System.out.println("Instruccion"+instruccion);
+			                
 			                if (instruccion.contains("+") || instruccion.contains("-") || instruccion.contains("*") || instruccion.contains("/")){
+			                	
 			                    OperacionesAritmeticas calculator = new OperacionesAritmeticas();
 			                    System.out.println("Resultado: " + calculator.calcular(instruccion));
 			                    break;
 			                    
-			                }
+			                } else if (instruccion.contains("list")){
+			                	
+			                    List<Object> list = new Evaluaciones().list(instruccion.subList(1, instruccion.size()));
+			                    System.out.println("Lista Creada: " + list);
+			                    
+			                } else if (instruccion.contains("equal")){
+			                	
+			                    if( (new Evaluaciones()).equals(instruccion.get(1), instruccion.get(2))){
+			                        System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es igual que" + instruccion.get(2));
+			                    }
+			                    else{
+			                        System.out.print("Resultado: Falso, " + instruccion.get(1) + " No es igual que" + instruccion.get(2));
+			                    }
+			                    
+			                } else if (instruccion.contains(">")){
+			                	
+			                    if( (new Evaluaciones()).greaterThan(instruccion.get(1), instruccion.get(2))){
+			                        System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es mayor que" + instruccion.get(2));
+			                    }
+			                    else{
+			                        System.out.print("Resultado: Falso, " + instruccion.get(1) + " NO es mayor que" + instruccion.get(2));
+			                    }
+			                    
+			                } else if (instruccion.contains("<")){
+			                	
+			                    if( (new Evaluaciones()).lessThan(instruccion.get(1), instruccion.get(2))){
+			                        System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es menor que" + instruccion.get(2));
+			                    }
+			                    else{
+			                        System.out.print("Resultado: Falso, " + instruccion.get(1) + " NO es menor que" + instruccion.get(2));
+			                    }
+			                
+				            }else if (instruccion.contains("cond")){
+				                	new Evaluaciones().cond(instruccion);
+				            }
+			                
 			                }}catch(Exception e){
 			                	System.out.println("No");
 			                }flag=false;
