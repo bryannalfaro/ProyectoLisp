@@ -5,8 +5,8 @@ import java.util.List;
 public class Proceso {
 	
 	public void procesar(List instruccion, List tempIns) {
-		 List<Object> list;
-		
+		 
+		List<Object> list;
 		for (int i=0;i<tempIns.size();i++) {
 
             instruccion = null;
@@ -30,9 +30,9 @@ public class Proceso {
                 break;
                 
             } else if (instruccion.contains("list")){
-            	
+            	System.out.println("Entro list");
                 list = new Evaluaciones().list(instruccion.subList(1, instruccion.size()));
-                System.out.println("Lista Creada: " + list.get(0));
+                System.out.println("Lista Creada: " +list);
                 
             } else if (instruccion.contains("equal")){
             	
@@ -69,8 +69,9 @@ public class Proceso {
             	new Evaluaciones().setqEstablished(instruccion);
             }
             else if(instruccion.contains("first")) {
+            	System.out.println("Entro first");
             	list=new Evaluaciones().list(instruccion.subList(1, instruccion.size()).subList(0, instruccion.size()-1));
-            	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().substring(7,8));
+            	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().substring(8,9));
             }
             
             }
