@@ -1,1 +1,1 @@
-(setq x (list 2 4))
+(first (list 6 4 5 7))
