@@ -51,31 +51,30 @@ public class ControladorInstrucciones {
 	            throw new Exception("ERROR");
 		} 
 	        else {
-	            return getAtom(token);
+	        	try {
+	    	        return Integer.parseInt(token);
+	    	} 
+	    	    catch (NumberFormatException e) {
+	    	        try {
+	    	            
+	    	            return Float.parseFloat(token);
+	    	        } 
+	    	        catch (NumberFormatException e2) {
+	    	            try {
+	    	                
+	    	                return Double.parseDouble(token);
+	    		} 
+	    	            catch (NumberFormatException e3) {
+	    	               
+	    	                return token;
+	    		}
+	    	        }
+	    	}
 		}
 	        
 	    }
 
-	private Object getAtom(String token) {
-	    try {
-	        return Integer.parseInt(token);
-	} 
-	    catch (NumberFormatException e) {
-	        try {
-	            
-	            return Float.parseFloat(token);
-	        } 
-	        catch (NumberFormatException e2) {
-	            try {
-	                
-	                return Double.parseDouble(token);
-		} 
-	            catch (NumberFormatException e3) {
-	               
-	                return token;
-		}
-	        }
-	}
-}
+
+	   
 
 }
