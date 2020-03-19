@@ -63,10 +63,11 @@ public class Evaluaciones {
     	
     }
     
-    public void firstOfList(List instrucicones) {
+    public void firstOfList(List instrucicones, Object n) {
     	String m="";
     	m=instrucicones.get(1).toString();
-    	System.out.println(m);
+    	//System.out.println(m);
+    	System.out.println(n);
     }
     
 }

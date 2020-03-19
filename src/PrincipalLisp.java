@@ -66,6 +66,7 @@ public class PrincipalLisp {
 			        }
 			        
 			     System.out.println("LISTAS:"+listas);
+			     List<Object> list;
 			     
 			     try{
 			            List instruccions = (List)listas;            
@@ -100,8 +101,8 @@ public class PrincipalLisp {
 			                    
 			                } else if (instruccion.contains("list")){
 			                	
-			                    List<Object> list = new Evaluaciones().list(instruccion.subList(1, instruccion.size()));
-			                    System.out.println("Lista Creada: " + list);
+			                    list = new Evaluaciones().list(instruccion.subList(1, instruccion.size()));
+			                    System.out.println("Lista Creada: " + list.get(0));
 			                    
 			                } else if (instruccion.contains("equal")){
 			                	
@@ -138,7 +139,8 @@ public class PrincipalLisp {
 				            	new Evaluaciones().setqEstablished(instruccion);
 				            }
 				            else if(instruccion.contains("first")) {
-				            	new Evaluaciones().firstOfList(instruccion);
+				            	list=new Evaluaciones().list(instruccion.subList(1, instruccion.size()).subList(0, instruccion.size()-1));
+				            	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().charAt(3));
 				            }
 			                
 			                }}catch(Exception e){
