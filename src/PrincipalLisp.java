@@ -140,7 +140,7 @@ public class PrincipalLisp {
 				            }
 				            else if(instruccion.contains("first")) {
 				            	list=new Evaluaciones().list(instruccion.subList(1, instruccion.size()).subList(0, instruccion.size()-1));
-				            	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().charAt(3));
+				            	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().substring(9,12));
 				            }
 			                
 			                }}catch(Exception e){

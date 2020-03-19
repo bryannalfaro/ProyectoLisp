@@ -1,6 +1,8 @@
  
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 // Clase para evaluaciones
@@ -60,6 +62,29 @@ public class Evaluaciones {
     }
     
     public void setqEstablished(List instrucciones) {
+    	Map<String, String> map = new HashMap<String, String>();
+    	//Si es una lista a almacenar
+    	if(instrucciones.get(2).toString().charAt(0)=='['){
+    		
+    		Map<String, String> map2 = new HashMap<String, String>();
+    		String[] var=instrucciones.get(2).toString().split(",");
+    		String contenido="";
+    		for(int i=1;i<var.length;i++) {
+    			//System.out.println(var[i]);
+    			contenido+=var[i];
+    		}
+    		map.put(instrucciones.get(1).toString(), contenido);
+    		System.out.println("La variable es: "+instrucciones.get(1).toString());
+    		System.out.println("valor "+"["+map.get(instrucciones.get(1).toString()));
+    		
+    	//Si solo es un dato	
+    	}else {
+    		
+    		map.put(instrucciones.get(1).toString(), instrucciones.get(2).toString());
+    		
+    		System.out.println("La variable es: "+instrucciones.get(1).toString());
+    		System.out.println("valor "+map.get(instrucciones.get(1).toString()));//Probar que si lo jala
+    	}
     	
     }
     

@@ -1,1 +1,1 @@
-(first(list ('s' 'a' 'b')))
+(setq x (list 2 4))
