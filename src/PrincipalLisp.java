@@ -21,14 +21,16 @@ public class PrincipalLisp {
 		while(flag) {
 			if(entrada==1) {
 				
-				System.out.println("Ingrese path del programa Lisp a ejecutar: ");
+				System.out.println("Ingrese nombre del programa Lisp a ejecutar seguido de .lisp: ");
+				String directorioNuevoDiccionario = System.getProperty("user.dir");
 				Scanner ingresoPath=new Scanner(System.in);
 				String ruta=ingresoPath.nextLine();
+		        
 				String datosLisp="";
-				if(new File(ruta).exists()) {
+				if(new File(directorioNuevoDiccionario + "\\src\\ArchivosPruebas\\"+ruta).exists()) {
 					try {
-				        Scanner inputScan = new Scanner(new File(ruta));
-				        
+				        //Scanner inputScan = new Scanner(new File(ruta));
+						Scanner inputScan = new Scanner(new File(directorioNuevoDiccionario + "\\src\\ArchivosPruebas\\"+ruta));
 				        while (inputScan.hasNextLine()) {
 				            String line = inputScan.nextLine();
 				            datosLisp+=line+"\n";
