@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Lectura {
 	
 	public String lectura() {
-		System.out.println("Ingrese nombre del programa Lisp a ejecutar seguido de .lisp: ");
+		System.out.println("Ingrese nombre del programa Lisp a ejecutar (sin el .lisp): ");
 		String directorioUsuario = System.getProperty("user.dir");
 		
 		Scanner ingresoPath=new Scanner(System.in);

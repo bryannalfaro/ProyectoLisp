@@ -13,75 +13,61 @@ import java.util.stream.Collectors;
  */
 public class ControladorInstrucciones {
 	
-	public List getToken(String delimitador,String value){
-        String tempValue = value.replaceAll("\\,", " ").replaceAll("\\[", "(").replaceAll("\\]", ")");
-        
-        List tempList = Collections.list(new StringTokenizer(tempValue.replaceAll("\\(", " ( ").replaceAll("\\)", " ) ").trim(), delimitador)).stream()
-            .map(token -> (String) token)
-            .collect(Collectors.toList());
-        return tempList;
+	public List token(String separador, String valor){
+        String temp = valor.replaceAll("\\,", " ").replaceAll("\\[", "(").replaceAll("\\]", ")");
+        List temp2 = Collections.list(new StringTokenizer(temp.replaceAll("\\(", " ( ").replaceAll("\\)", " ) ").trim(), separador)).stream().map(token -> (String) token).collect(Collectors.toList());
+        return temp2;
         
     }
 	
-	public Object getTarea(List instruccion) throws Exception {
+	public Object procesarInstruccion(List inst) throws Exception {
 	        
-	        if (instruccion.isEmpty()) {
+	    if (inst.isEmpty()) {
 	            throw new IllegalArgumentException("INVALIDO");
 		}
-	        String token = instruccion.remove(0).toString();
+	    
+	    String tkn = inst.remove(0).toString();
 	       
-		if (token.equals("(")) {
+		if (tkn.equals("(")) {
 	           
-	            List<Object> tempList = new ArrayList<Object>(instruccion.size() - 1);
-	            try{
-	                while (!instruccion.get(0).equals(")")){
-	                    
-	                    tempList.add(getTarea(instruccion));
-	                }
-	
-	                
-	                instruccion.remove(0);
-	
-	
-	                if(instruccion.get(0).equals("(") && instruccion.size() > 1){
-	                    tempList.add(getTarea(instruccion));
-	                }
-	                
-	                return tempList;
-	            }
-	            catch(Exception e){
-	                return tempList;
-	            }
+			List<Object> temp = new ArrayList<Object>(inst.size() - 1);
+            try{
+                while (!inst.get(0).equals(")")){
+                	temp.add(procesarInstruccion(inst));
+                }
+                
+                inst.remove(0);
+
+                if(inst.get(0).equals("(") && inst.size() > 1){
+                	temp.add(procesarInstruccion(inst));
+                }
+                
+                return temp;
+                
+            } catch(Exception e){
+                return temp;
+            }
 	            
-		} 
-	        else if (token.equals(")")) {
-	            throw new Exception("ERROR");
-		} 
-	        else {
-	        	try {
-	    	        return Integer.parseInt(token);
-	    	} 
-	    	    catch (NumberFormatException e) {
-	    	        try {
-	    	            
-	    	            return Float.parseFloat(token);
-	    	        } 
-	    	        catch (NumberFormatException e2) {
-	    	            try {
-	    	                
-	    	                return Double.parseDouble(token);
-	    		} 
-	    	            catch (NumberFormatException e3) {
-	    	               
-	    	                return token;
-	    		}
-	    	        }
+		} else if (tkn.equals(")")) {
+	            throw new Exception("ERROR DE TOKEN");
+		} else {
+        	try {
+    	        return Integer.parseInt(tkn);
+        	} 
+    	    catch (NumberFormatException error) {
+    	        try {
+    	            
+    	            return Float.parseFloat(tkn);
+    	        } catch (NumberFormatException error_2) {
+    	            try {
+    	                
+    	                return Double.parseDouble(tkn);
+    	            } catch (NumberFormatException error_3) {
+    	               
+    	                return tkn;
+    	            }
+	    	    }
 	    	}
-		}
-	        
-	    }
-
-
-	   
-
+		}     
+	}   
 }

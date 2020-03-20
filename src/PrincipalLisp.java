@@ -31,53 +31,48 @@ public class PrincipalLisp {
 			    String datosLisp=lectura.lectura();
 				
 				System.out.println(datosLisp);
-				 String tempInstruction = "";
-			        char[] caracteres = (datosLisp).toCharArray();
+				String tempInstruction = "";
+			    char[] caracteres = (datosLisp).toCharArray();  
+			    List<Object> listas = new ArrayList<Object>();
+		        for(int i = 0; i < caracteres.length;i++){
+		            if(caracteres[i] == ')'){
+		                tempInstruction += caracteres[i];		                
+		                if(i < (caracteres.length - 2)){
+		                   if(caracteres[i + 1] == '('){
+		                       listas.add(tempInstruction);
+		                        tempInstruction = "";
+		                   }
+		                }
+		            } else if(caracteres[i] == '\n'){
+		                listas.add(tempInstruction);
+		                tempInstruction = "";
+		            } else{
+		                tempInstruction += caracteres[i];
+		            } 
+		        }
 			        
-			        List<Object> listas = new ArrayList<Object>();
-			        
-			        for(int i = 0; i < caracteres.length;i++){
-			        	
-			            if(caracteres[i] == ')'){
-			                tempInstruction += caracteres[i];
+			    try {
+		            List<Object> instruccions = (List<Object>)listas;            
+		            List<Object> tempIns = new ArrayList<Object>();
+		            ControladorInstrucciones archivo = new ControladorInstrucciones();
+		            
+		            for(int control=0;control<instruccions.size();control++){
+		                tempIns.add(archivo.procesarInstruccion(archivo.token(" \n", instruccions.get(control).toString() )));   
+		            }
+		            
+		            proceso.procesar(instruccions, tempIns);
+		        } catch(Exception e){
+		        		System.out.println("Error de proceso");
+		        }
+			    
+			     flag=false;
 			                
-			                if(i < (caracteres.length - 2)){
-			                   if(caracteres[i + 1] == '('){
-			                       listas.add(tempInstruction);
-			                        tempInstruction = "";
-			                   }
-			                }
-			            }
-			            else if(caracteres[i] == '\n'){
-			                listas.add(tempInstruction);
-			                tempInstruction = "";
-			            }
-			            else{
-			                tempInstruction += caracteres[i];
-			            } 
-			        }
-			        
-			     try{
-			            List<Object> instruccions = (List<Object>)listas;            
-			            List<Object> tempIns = new ArrayList<Object>();
-			            ControladorInstrucciones archivo = new ControladorInstrucciones();
-			            
-			            for(int control=0;control<instruccions.size();control++){
-			                tempIns.add(archivo.getTarea(archivo.getToken(" \n", instruccions.get(control).toString() )));   
-			            }
-			            proceso.procesar(instruccions, tempIns);
-			            }catch(Exception e){
-			                	System.out.println("Error de proceso");
-			                }flag=false;
-			                
-			}else if(entrada==2) {
+			} else if(entrada==2) {
 				System.out.println("Hasta pronto");
 				flag=false;
-			}else {
+			} else {
 				System.out.println("Opcion no valida");
 			}
-	}
-			
-  }
-			     
+		}		
+	}		     
 }

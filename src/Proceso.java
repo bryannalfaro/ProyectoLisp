@@ -87,9 +87,7 @@ public class Proceso {
             	
             	list=new Evaluaciones().list(instruccion.subList(1, instruccion.size()).subList(0, instruccion.size()-1));
             	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().substring(8,9));
-            }
-            
+            } 
 		}
 	}
-
 }
