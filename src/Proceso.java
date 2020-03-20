@@ -5,14 +5,15 @@ import java.util.List;
 public class Proceso {
 	
 	public void procesar(List instruccion, List tempIns) {
-		 
 		List<Object> list;
-		for (int i=0;i<tempIns.size();i++) {
-
+		for (int i=0; i<tempIns.size(); i++) {
             instruccion = null;
-            
             if(tempIns.get(i).getClass()==(ArrayList.class)){
                 instruccion = (List) tempIns.get(i);
+            }
+            else if(tempIns.getClass() == ArrayList.class){
+            	instruccion = tempIns;
+               
             }
             else if(tempIns.get(i).getClass()==String.class){
                 instruccion = Arrays.asList(tempIns.toString().split(" "));
@@ -21,7 +22,8 @@ public class Proceso {
             else{
                  instruccion = tempIns;
             }
-            System.out.println("Instruccion"+instruccion);
+            
+            System.out.println("Instruccion " + instruccion);
             
             if (instruccion.contains("+") || instruccion.contains("-") || instruccion.contains("*") || instruccion.contains("/")){
             	
@@ -37,32 +39,38 @@ public class Proceso {
             } else if (instruccion.contains("equal")){
             	
                 if( (new Evaluaciones()).equals(instruccion.get(1), instruccion.get(2))){
-                    System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es igual que" + instruccion.get(2));
+                    System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es igual que " + instruccion.get(2));
                 }
                 else{
-                    System.out.print("Resultado: Falso, " + instruccion.get(1) + " No es igual que" + instruccion.get(2));
+                    System.out.print("Resultado: Falso, " + instruccion.get(1) + " No es igual que " + instruccion.get(2));
                 }
                 
             } else if (instruccion.contains(">")){
             	
                 if( (new Evaluaciones()).greaterThan(instruccion.get(1), instruccion.get(2))){
-                    System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es mayor que" + instruccion.get(2));
+                    System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es mayor que " + instruccion.get(2));
                 }
                 else{
-                    System.out.print("Resultado: Falso, " + instruccion.get(1) + " NO es mayor que" + instruccion.get(2));
+                    System.out.print("Resultado: Falso, " + instruccion.get(1) + " NO es mayor que " + instruccion.get(2));
                 }
                 
             } else if (instruccion.contains("<")){
             	
                 if( (new Evaluaciones()).lessThan(instruccion.get(1), instruccion.get(2))){
-                    System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es menor que" + instruccion.get(2));
+                    System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es menor que " + instruccion.get(2));
                 }
                 else{
-                    System.out.print("Resultado: Falso, " + instruccion.get(1) + " NO es menor que" + instruccion.get(2));
+                    System.out.print("Resultado: Falso, " + instruccion.get(1) + " NO es menor que " + instruccion.get(2));
                 }
             
             }else if (instruccion.contains("cond")){
-                	new Evaluaciones().cond(instruccion);
+                tempIns = (ArrayList)new Evaluaciones().cond(instruccion);
+                if (tempIns == null) {
+					tempIns = (List)instruccion.get(1);
+					i=-1;
+				}
+                
+                
             }else if(instruccion.contains("quote")) {
             	new Evaluaciones().quoteShow(instruccion);
             }else if(instruccion.contains("setq")) {
@@ -74,7 +82,7 @@ public class Proceso {
             	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().substring(8,9));
             }
             
-            }
+		}
 	}
 
 }

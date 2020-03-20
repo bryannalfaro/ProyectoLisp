@@ -34,7 +34,7 @@ public class Evaluaciones {
             List instruccion = (List)inst;
             if (instruccion.contains("equal")){
                 if (equals(instruccion.get(1), instruccion.get(2))){
-                    return instruccion.get(3);
+                    return instruccion;
                 }
             } else if (instruccion.contains("<")){
                 if (lessThan(instruccion.get(1), instruccion.get(2))){
@@ -42,13 +42,14 @@ public class Evaluaciones {
                 }
             } else if (instruccion.contains(">")){
                 if (greaterThan(instruccion.get(1), instruccion.get(2))){
-                    return instruccion.get(3);
+                	return instruccion.get(3);
                 }
             } else if (i == listTemp2.size()){
                 return listTemp2.get(i);
             }
             i++;
         }
+        System.out.println("aca");
         return null;
     }
     

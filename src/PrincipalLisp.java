@@ -2,7 +2,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class PrincipalLisp {
 	
@@ -27,10 +26,10 @@ public class PrincipalLisp {
 				String ruta=ingresoPath.nextLine();
 		        
 				String datosLisp="";
-				if(new File(directorioUsuario + "\\src\\ArchivosPruebas\\"+ruta).exists()) {
+				if(new File(directorioUsuario + "\\src\\ArchivosPruebas\\"+ruta+".lisp").exists()) {
 					try {
 				        //Scanner inputScan = new Scanner(new File(ruta));
-						Scanner inputScan = new Scanner(new File(directorioUsuario + "\\src\\ArchivosPruebas\\"+ruta));
+						Scanner inputScan = new Scanner(new File(directorioUsuario + "\\src\\ArchivosPruebas\\"+ruta+".lisp"));
 				        while (inputScan.hasNextLine()) {
 				            String line = inputScan.nextLine();
 				            datosLisp+=line+"\n";
@@ -69,7 +68,6 @@ public class PrincipalLisp {
 			        }
 			        
 			     System.out.println("LISTAS:"+listas);
-			     List<Object> list;
 			     
 			     try{
 			            List instruccions = (List)listas;            
@@ -82,7 +80,7 @@ public class PrincipalLisp {
 			            }
 			            proceso.procesar(instruccions, tempIns);
 			            }catch(Exception e){
-			                	System.out.println("No");
+			                	System.out.println("Error de proceso");
 			                }flag=false;
 			}else if(entrada==2) {
 				System.out.println("Hasta pronto");
