@@ -3,12 +3,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
-
+/**
+ * 
+ * Clase donde se maneja el archivo
+ * @author Bryann
+ * @author Diego de Jesus
+ * @author Javier Hernandez
+ *
+ */
 public class ControladorInstrucciones {
 	
 	public List getToken(String delimitador,String value){
         String tempValue = value.replaceAll("\\,", " ").replaceAll("\\[", "(").replaceAll("\\]", ")");
-        System.out.println("TEMP"+tempValue);
+        
         List tempList = Collections.list(new StringTokenizer(tempValue.replaceAll("\\(", " ( ").replaceAll("\\)", " ) ").trim(), delimitador)).stream()
             .map(token -> (String) token)
             .collect(Collectors.toList());

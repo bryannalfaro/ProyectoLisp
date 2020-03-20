@@ -1,7 +1,13 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Clase donde se envia la informacion del proceso a Evaluaciones
+ * @author Bryann
+ * @author Diego de Jesus
+ * @author Javier Hernandez
+ *
+ */
 public class Proceso {
 	
 	public void procesar(List instruccion, List tempIns) {
@@ -32,7 +38,7 @@ public class Proceso {
                 break;
                 
             } else if (instruccion.contains("list")){
-            	System.out.println("Entro list");
+            	
                 list = new Evaluaciones().list(instruccion.subList(1, instruccion.size()));
                 System.out.println("Lista Creada: " +list);
                 
@@ -77,7 +83,7 @@ public class Proceso {
             	new Evaluaciones().setqEstablished(instruccion);
             }
             else if(instruccion.contains("first")) {
-            	System.out.println("Entro first");
+            	
             	list=new Evaluaciones().list(instruccion.subList(1, instruccion.size()).subList(0, instruccion.size()-1));
             	new Evaluaciones().firstOfList(instruccion,list.get(0).toString().substring(8,9));
             }

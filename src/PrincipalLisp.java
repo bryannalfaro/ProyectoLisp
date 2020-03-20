@@ -3,6 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * 
+ *Clase principal del interprete
+ *@author Bryann
+ *@author Diego de Jesus
+ *@author Javier Hernandez
+ */
 public class PrincipalLisp {
 	
 	public static void main(String[] args) {
@@ -10,6 +17,7 @@ public class PrincipalLisp {
 		int entrada;
 		boolean flag=true;
 		Proceso proceso= new Proceso();
+		Lectura lectura = new Lectura();
 		
 		System.out.println("Bienvenido al interprete Lisp");
 		System.out.println("1. Buscar archivo");
@@ -19,27 +27,8 @@ public class PrincipalLisp {
 		
 		while(flag) {
 			if(entrada==1) {
+			    String datosLisp=lectura.lectura();
 				
-				System.out.println("Ingrese nombre del programa Lisp a ejecutar seguido de .lisp: ");
-				String directorioUsuario = System.getProperty("user.dir");
-				Scanner ingresoPath=new Scanner(System.in);
-				String ruta=ingresoPath.nextLine();
-		        
-				String datosLisp="";
-				if(new File(directorioUsuario + "\\src\\ArchivosPruebas\\"+ruta+".lisp").exists()) {
-					try {
-				        //Scanner inputScan = new Scanner(new File(ruta));
-						Scanner inputScan = new Scanner(new File(directorioUsuario + "\\src\\ArchivosPruebas\\"+ruta+".lisp"));
-				        while (inputScan.hasNextLine()) {
-				            String line = inputScan.nextLine();
-				            datosLisp+=line+"\n";
-				              
-				        }
-				        inputScan.close();
-				    } catch (Exception ex) {
-				        ex.printStackTrace();
-				    }
-				}
 				System.out.println(datosLisp);
 				 String tempInstruction = "";
 			        char[] caracteres = (datosLisp).toCharArray();
@@ -67,21 +56,19 @@ public class PrincipalLisp {
 			            } 
 			        }
 			        
-			     System.out.println("LISTAS:"+listas);
-			     
 			     try{
 			            List instruccions = (List)listas;            
 			            List tempIns = new ArrayList();
 			            ControladorInstrucciones archivo = new ControladorInstrucciones();
 			            
 			            for(int control=0;control<instruccions.size();control++){
-			                tempIns.add(archivo.getTarea(archivo.getToken(" \n", instruccions.get(control).toString() )));
-			                
+			                tempIns.add(archivo.getTarea(archivo.getToken(" \n", instruccions.get(control).toString() )));   
 			            }
 			            proceso.procesar(instruccions, tempIns);
 			            }catch(Exception e){
 			                	System.out.println("Error de proceso");
 			                }flag=false;
+			                
 			}else if(entrada==2) {
 				System.out.println("Hasta pronto");
 				flag=false;

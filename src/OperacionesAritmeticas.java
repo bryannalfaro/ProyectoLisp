@@ -2,6 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * 
+ * Clase donde se realizan aritmeticas
+ *@author Bryann
+ *@author Diego de Jesus
+ *@author Javier Hernandez
+ *
+ */
 public class OperacionesAritmeticas {
 	
 	double resultado=0.0;

@@ -4,7 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Clase que recibe la peticion y envia el resultado requerido
+ * @author Bryann
+ * @author Diego de Jesus
+ * @author Javier Hernandez
+ *
+ */
 // Clase para evaluaciones
  
 public class Evaluaciones {
