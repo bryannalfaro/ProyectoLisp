@@ -10,12 +10,13 @@ import java.util.List;
  */
 public class Proceso {
 	
-	public void procesar(List instruccion, List tempIns) {
+	@SuppressWarnings("unchecked")
+	public void procesar(List instruccion, List<?> tempIns) {
 		List<Object> list;
 		for (int i=0; i<tempIns.size(); i++) {
             instruccion = null;
             if(tempIns.get(i).getClass()==(ArrayList.class)){
-                instruccion = (List) tempIns.get(i);
+                instruccion = (List<?>) tempIns.get(i);
             }
             else if(tempIns.getClass() == ArrayList.class){
             	instruccion = tempIns;
@@ -70,9 +71,9 @@ public class Proceso {
                 }
             
             }else if (instruccion.contains("cond")){
-                tempIns = (ArrayList)new Evaluaciones().cond(instruccion);
+                tempIns = (ArrayList<?>)new Evaluaciones().cond(instruccion);
                 if (tempIns == null) {
-					tempIns = (List)instruccion.get(1);
+					tempIns = (List<?>)instruccion.get(1);
 					i=-1;
 				}
                 

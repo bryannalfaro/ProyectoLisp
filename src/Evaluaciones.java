@@ -32,12 +32,12 @@ public class Evaluaciones {
         return (Double.parseDouble(obj1.toString()) < Double.parseDouble(obj2.toString()));
     }
 
-    public Object cond(List instructiones){
-        List listTemp = instructiones.subList(1, instructiones.size());
-        List listTemp2 = (List) listTemp.get(0);
+    public Object cond(List<?> instructiones){
+        List<?> listTemp = instructiones.subList(1, instructiones.size());
+        List<?> listTemp2 = (List<?>) listTemp.get(0);
         int i = 0;
         for (Object inst: listTemp2) {
-            List instruccion = (List)inst;
+            List<?> instruccion = (List<?>)inst;
             if (instruccion.contains("equal")){
                 if (equals(instruccion.get(1), instruccion.get(2))){
                     return instruccion;
@@ -59,7 +59,7 @@ public class Evaluaciones {
         return null;
     }
     
-    public void quoteShow(List instrucciones) {
+    public void quoteShow(List<?> instrucciones) {
     	String texto="";
     	for(int i=1;i<instrucciones.size();i++) {
     		
@@ -68,7 +68,7 @@ public class Evaluaciones {
     	}
     }
     
-    public void setqEstablished(List instrucciones) {
+    public void setqEstablished(List<?> instrucciones) {
     	Map<String, String> map = new HashMap<String, String>();
     	//Si es una lista a almacenar
     	if(instrucciones.get(2).toString().charAt(0)=='['){
@@ -95,7 +95,7 @@ public class Evaluaciones {
     	
     }
     
-    public void firstOfList(List instrucicones, Object n) {
+    public void firstOfList(List<?> instrucicones, Object n) {
     	String m="";
     	m=instrucicones.get(1).toString();
     	//System.out.println(m);

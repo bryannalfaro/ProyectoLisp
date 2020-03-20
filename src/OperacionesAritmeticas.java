@@ -16,6 +16,7 @@ public class OperacionesAritmeticas {
 	int largo=0;
 	
 	
+	@SuppressWarnings("unchecked")
 	public Double calcular(List<Object> Lista){
 			Stack<Double> resultadoStack=new Stack<>();
 	        
@@ -101,7 +102,7 @@ public class OperacionesAritmeticas {
     }
     
     public Stack<Double> ChangeStack(Stack<Double> value){
-        Stack<Double> temp_stack = new Stack();
+        Stack<Double> temp_stack = new Stack<Double>();
         while(!value.empty()){
             temp_stack.add((double)value.pop());
         }

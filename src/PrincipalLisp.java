@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class PrincipalLisp {
 	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		Scanner ingreso = new Scanner(System.in);
 		int entrada;
@@ -57,8 +58,8 @@ public class PrincipalLisp {
 			        }
 			        
 			     try{
-			            List instruccions = (List)listas;            
-			            List tempIns = new ArrayList();
+			            List<Object> instruccions = (List<Object>)listas;            
+			            List<Object> tempIns = new ArrayList<Object>();
 			            ControladorInstrucciones archivo = new ControladorInstrucciones();
 			            
 			            for(int control=0;control<instruccions.size();control++){
