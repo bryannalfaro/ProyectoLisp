@@ -16,18 +16,7 @@ import java.util.stream.Collectors;
  *https://www.geeksforgeeks.org/stream-in-java/
  */
 public class ControladorInstrucciones {
-	/**
-	 * Obtendra el token de la instruccion
-	 * @param separador
-	 * @param valor
-	 * @return
-	 */
-	public List token(String separador, String valor){
-        String temp = valor.replaceAll("\\,", " ").replaceAll("\\[", "(").replaceAll("\\]", ")");
-        List temp2 = Collections.list(new StringTokenizer(temp.replaceAll("\\(", " ( ").replaceAll("\\)", " ) ").trim(), separador)).stream().map(token -> (String) token).collect(Collectors.toList());
-        return temp2;
-        
-    }
+	
 	
 	/**
 	 * Se dividen las instrucciones
@@ -84,5 +73,18 @@ public class ControladorInstrucciones {
 	    	    }
 	    	}
 		}     
-	}   
+	} 
+	
+	/**
+	 * Obtendra el token de la instruccion
+	 * @param separador
+	 * @param valor
+	 * @return
+	 */
+	public List token(String separador, String valor){
+        String temp = valor.replaceAll("\\,", " ").replaceAll("\\[", "(").replaceAll("\\]", ")");
+        List temp2 = Collections.list(new StringTokenizer(temp.replaceAll("\\(", " ( ").replaceAll("\\)", " ) ").trim(), separador)).stream().map(token -> (String) token).collect(Collectors.toList());
+        return temp2;
+        
+    }
 }

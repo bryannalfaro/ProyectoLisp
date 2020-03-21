@@ -24,13 +24,7 @@ public class Evaluaciones {
         return obj1.equals(obj2);
     }
 
-    public boolean Mayor(Object obj1, Object obj2){
-        return (Double.parseDouble(obj1.toString()) > Double.parseDouble(obj2.toString()));
-    }
-
-    public boolean Menor(Object obj1, Object obj2){
-        return (Double.parseDouble(obj1.toString()) < Double.parseDouble(obj2.toString()));
-    }
+    
 
     /**
      * Metodo para evaluar la instruccion cond
@@ -41,8 +35,11 @@ public class Evaluaciones {
         List<?> listTemp = instructiones.subList(1, instructiones.size());
         List<?> listTemp2 = (List<?>) listTemp.get(0);
         int i = 0;
-        for (Object inst: listTemp2) {
-            List<?> instruccion = (List<?>)inst;
+        
+        for(int u=0;u<listTemp2.size();u++) {
+        	Object inst=listTemp2.get(u);
+        	List<?> instruccion = (List<?>)inst;
+        	
             if (instruccion.contains("equal")){
                 if (equals(instruccion.get(1), instruccion.get(2))){
                     return instruccion;
@@ -60,7 +57,17 @@ public class Evaluaciones {
             }
             i++;
         }
+        
         return null;
+    }
+    
+    //Funciones de mayor y menor
+    public boolean Mayor(Object obj1, Object obj2){
+        return (Double.parseDouble(obj1.toString()) > Double.parseDouble(obj2.toString()));
+    }
+
+    public boolean Menor(Object obj1, Object obj2){
+        return (Double.parseDouble(obj1.toString()) < Double.parseDouble(obj2.toString()));
     }
     
     /**
