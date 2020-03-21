@@ -12,7 +12,12 @@ import java.util.stream.Collectors;
  *
  */
 public class ControladorInstrucciones {
-	
+	/**
+	 * Obtendra el token de la instruccion
+	 * @param separador
+	 * @param valor
+	 * @return
+	 */
 	public List token(String separador, String valor){
         String temp = valor.replaceAll("\\,", " ").replaceAll("\\[", "(").replaceAll("\\]", ")");
         List temp2 = Collections.list(new StringTokenizer(temp.replaceAll("\\(", " ( ").replaceAll("\\)", " ) ").trim(), separador)).stream().map(token -> (String) token).collect(Collectors.toList());
@@ -20,6 +25,12 @@ public class ControladorInstrucciones {
         
     }
 	
+	/**
+	 * Se dividen las instrucciones
+	 * @param inst
+	 * @return
+	 * @throws Exception
+	 */
 	public Object procesarInstruccion(List inst) throws Exception {
 	        
 	    if (inst.isEmpty()) {

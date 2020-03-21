@@ -11,24 +11,31 @@ import java.util.Stack;
  *
  */
 public class OperacionesAritmeticas {
-	
-	double resultado=0.0;
-	int largo=0;
+	/**
+	 * Declaracion de variables necesarias
+	 */
+	private double resultadoNumerico=0.0;
+	private int largo=0;
 	
 	
 	@SuppressWarnings("unchecked")
+	/**
+	 * Metodo para obtener el numero de respuesta
+	 * @param Lista
+	 * @return Double
+	 */
 	public Double calcular(List<Object> Lista){
 			Stack<Double> resultadoStack=new Stack<>();
 	        
-	        String signo = String.valueOf(Lista.get(0));
+	        String signo = Lista.get(0).toString();
 	        
 	        for (int i = 1; i < Lista.size(); i++){
 	            if(Lista.get(i).getClass()==Integer.class || Lista.get(i).getClass()==Double.class ){
-	                
-	                resultadoStack.push(Double.parseDouble(Lista.get(i).toString()));
+	                String resultadoPush=Lista.get(i).toString();
+	                resultadoStack.push(Double.parseDouble(resultadoPush));
 	                
 	            }else if(Lista.get(i).getClass()==ArrayList.class){ 
-	                resultadoStack.push(calcular((List)Lista.get(i)));
+	                resultadoStack.push(calcular((List<Object>)Lista.get(i)));
 	            }
 	        }
 	        
@@ -36,75 +43,63 @@ public class OperacionesAritmeticas {
 	         return resultadoStack.peek();
 	    }
 
+	/**
+	 * Se decide que operacion usar de acuerdo al signo
+	 * @param signo
+	 * @param resultado
+	 */
 	public void operacion(String signo, Stack<Double>resultado) {
 		  if(signo.matches("[+]")){
-	          resultado.push(OperacionSuma(resultado));
+			  resultadoNumerico=0;
+		        largo = resultado.size();
+		        
+		        for(int control = 0; control<largo;control++){
+		            resultadoNumerico += resultado.pop();
+		        }
+	          resultado.push(resultadoNumerico);
 	      }
 	      if(signo.matches("[-]")){
-	          resultado.push(OperacionResta(resultado));
+	    	  Stack<Double> temp_stack = ChangeStack(resultado);
+	          
+	          resultadoNumerico = temp_stack.pop();
+	          largo = temp_stack.size();
+	          
+	          for(int i = 0; i<largo;i++){
+	              resultadoNumerico -= temp_stack.pop();
+	          }
+	          resultado.push(resultadoNumerico);
 	      }
 	      if(signo.matches("[*]")){
-	          resultado.push(OperacionProducto(resultado));
+	    	  resultadoNumerico = resultado.pop();
+	          largo = resultado.size();
+	          for(int i = 0; i<largo;i++){
+	              resultadoNumerico *= resultado.pop();
+	          } 
+	          resultado.push(resultadoNumerico);
 	      }
 	      if(signo.matches("[/]")){
-	          resultado.push(OperacionDivision(resultado));
+	    	  Stack<Double> temp_stack = ChangeStack(resultado);
+	          
+	          resultadoNumerico = temp_stack.pop();
+	          largo = temp_stack.size();
+	          
+	          for(int control = 0; control<largo;control++){
+	              resultadoNumerico /= temp_stack.pop();
+	          }
+	          resultado.push(resultadoNumerico);
 	      }
 	      
 	}
-    
-    
-    public double OperacionSuma(Stack<Double> value){
-        resultado=0;
-        largo = value.size();
-        
-        for(int control = 0; control<largo;control++){
-            resultado += value.pop();
-        }
-        return resultado;
-    }
-    
-    
-    public double OperacionResta(Stack<Double> value){
-        
-        Stack<Double> temp_stack = ChangeStack(value);
-        
-        resultado = temp_stack.pop();
-        largo = temp_stack.size();
-        
-        for(int i = 0; i<largo;i++){
-            resultado -= temp_stack.pop();
-        }
-        return resultado;
-    }
-    
-    public double OperacionProducto(Stack<Double> value){
-       
-        resultado = value.pop();
-        largo = value.size();
-        for(int i = 0; i<largo;i++){
-            resultado *= value.pop();
-        }        
-        return resultado;
-    }
-    
-    public double OperacionDivision(Stack<Double> value){
-        
-        Stack<Double> temp_stack = ChangeStack(value);
-        
-        resultado = temp_stack.pop();
-        largo = temp_stack.size();
-        
-        for(int control = 0; control<largo;control++){
-            resultado /= temp_stack.pop();
-        }
-        
-        return resultado;
-    }
-    
+   
+	/**
+	 * Cambia el stack para mejorar la lectura
+	 * @param value
+	 * @return Stack
+	 */
     public Stack<Double> ChangeStack(Stack<Double> value){
         Stack<Double> temp_stack = new Stack<Double>();
         while(!value.empty()){
-            temp_stack.add((double)value.pop());
+            temp_stack.add(value.pop());
         }
         
         return temp_stack;

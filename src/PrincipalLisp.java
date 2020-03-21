@@ -14,12 +14,18 @@ public class PrincipalLisp {
 	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
+		/**
+		 * Declaracion de variables necesarias
+		 */
 		Scanner ingreso = new Scanner(System.in);
 		int entrada;
 		boolean flag=true;
 		Proceso proceso= new Proceso();
 		Lectura lectura = new Lectura();
 		
+		/**
+		 * Inicio del proceso
+		 */
 		System.out.println("Bienvenido al interprete Lisp");
 		System.out.println("1. Buscar archivo");
 		System.out.println("2. Salir");
@@ -28,7 +34,7 @@ public class PrincipalLisp {
 		
 		while(flag) {
 			if(entrada==1) {
-			    String datosLisp=lectura.lectura();
+			    String datosLisp=lectura.lectura(); //se llama a la clase lectura
 				
 				System.out.println(datosLisp);
 				String tempInstruction = "";
@@ -60,7 +66,7 @@ public class PrincipalLisp {
 		                tempIns.add(archivo.procesarInstruccion(archivo.token(" \n", instruccions.get(control).toString() )));   
 		            }
 		            
-		            proceso.procesar(instruccions, tempIns);
+		            proceso.procesar(instruccions, tempIns);//Se llama a procesar
 		        } catch(Exception e){
 		        		System.out.println("Error de proceso");
 		        }

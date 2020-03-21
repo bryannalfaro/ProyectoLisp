@@ -24,14 +24,19 @@ public class Evaluaciones {
         return obj1.equals(obj2);
     }
 
-    public boolean greaterThan(Object obj1, Object obj2){
+    public boolean Mayor(Object obj1, Object obj2){
         return (Double.parseDouble(obj1.toString()) > Double.parseDouble(obj2.toString()));
     }
 
-    public boolean lessThan(Object obj1, Object obj2){
+    public boolean Menor(Object obj1, Object obj2){
         return (Double.parseDouble(obj1.toString()) < Double.parseDouble(obj2.toString()));
     }
 
+    /**
+     * Metodo para evaluar la instruccion cond
+     * @param instructiones
+     * @return Object
+     */
     public Object cond(List<?> instructiones){
         List<?> listTemp = instructiones.subList(1, instructiones.size());
         List<?> listTemp2 = (List<?>) listTemp.get(0);
@@ -43,11 +48,11 @@ public class Evaluaciones {
                     return instruccion;
                 }
             } else if (instruccion.contains("<")){
-                if (lessThan(instruccion.get(1), instruccion.get(2))){
+                if (Menor(instruccion.get(1), instruccion.get(2))){
                     return instruccion.get(3);
                 }
             } else if (instruccion.contains(">")){
-                if (greaterThan(instruccion.get(1), instruccion.get(2))){
+                if (Mayor(instruccion.get(1), instruccion.get(2))){
                 	return instruccion.get(3);
                 }
             } else if (i == listTemp2.size()){
@@ -58,6 +63,10 @@ public class Evaluaciones {
         return null;
     }
     
+    /**
+     * Metodo para evaluar el quote 
+     * @param instrucciones
+     */
     public void quoteShow(List<?> instrucciones) {
     	String texto="";
     	for(int i=1;i<instrucciones.size();i++) {
@@ -66,7 +75,10 @@ public class Evaluaciones {
     		System.out.println(texto);
     	}
     }
-    
+    /**
+     * Metodo para evaluar el setq
+     * @param instrucciones
+     */
     public void setqEstablished(List<?> instrucciones) {
     	Map<String, String> map = new HashMap<String, String>();
     	//Si es una lista a almacenar
@@ -93,7 +105,11 @@ public class Evaluaciones {
     	}
     	
     }
-    
+    /**
+     * Metodo para evaluar el primer elemento de list
+     * @param instrucicones
+     * @param n
+     */
     public void firstOfList(List<?> instrucicones, Object n) {
     	String m="";
     	m=instrucicones.get(1).toString();

@@ -9,7 +9,10 @@ import java.util.Scanner;
  *
  */
 public class Lectura {
-	
+	/**
+	 * Se lleva a cabo la lectura del archivo
+	 * @return String
+	 */
 	public String lectura() {
 		System.out.println("Ingrese nombre del programa Lisp a ejecutar (sin el .lisp): ");
 		String directorioUsuario = System.getProperty("user.dir");

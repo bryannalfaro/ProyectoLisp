@@ -9,7 +9,11 @@ import java.util.List;
  *
  */
 public class Proceso {
-	
+	/**
+	 * Se lleva a cabo los procesos de las operaciones llamando a Evaluaciones
+	 * @param instruccion
+	 * @param tempIns
+	 */
 	@SuppressWarnings("unchecked")
 	public void procesar(List instruccion, List<?> tempIns) {
 		List<Object> list;
@@ -32,7 +36,7 @@ public class Proceso {
             
             System.out.println("Instruccion " + instruccion);
             
-            if (instruccion.contains("+") || instruccion.contains("-") || instruccion.contains("*") || instruccion.contains("/")){
+            if (instruccion.contains("-") || instruccion.contains("/") || instruccion.contains("*") || instruccion.contains("+")){
             	
                 OperacionesAritmeticas calculator = new OperacionesAritmeticas();
                 System.out.println("Resultado: " + calculator.calcular(instruccion));
@@ -54,7 +58,7 @@ public class Proceso {
                 
             } else if (instruccion.contains(">")){
             	
-                if( (new Evaluaciones()).greaterThan(instruccion.get(1), instruccion.get(2))){
+                if( (new Evaluaciones()).Mayor(instruccion.get(1), instruccion.get(2))){
                     System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es mayor que " + instruccion.get(2));
                 }
                 else{
@@ -63,7 +67,7 @@ public class Proceso {
                 
             } else if (instruccion.contains("<")){
             	
-                if( (new Evaluaciones()).lessThan(instruccion.get(1), instruccion.get(2))){
+                if( (new Evaluaciones()).Menor(instruccion.get(1), instruccion.get(2))){
                     System.out.print("Resultado: Verdadero, " + instruccion.get(1) + " es menor que " + instruccion.get(2));
                 }
                 else{
@@ -76,8 +80,6 @@ public class Proceso {
 					tempIns = (List<?>)instruccion.get(1);
 					i=-1;
 				}
-                
-                
             }else if(instruccion.contains("quote")) {
             	new Evaluaciones().quoteShow(instruccion);
             }else if(instruccion.contains("setq")) {
