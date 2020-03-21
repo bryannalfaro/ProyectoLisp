@@ -24,8 +24,6 @@ public class Evaluaciones {
         return obj1.equals(obj2);
     }
 
-    
-
     /**
      * Metodo para evaluar la instruccion cond
      * @param instructiones

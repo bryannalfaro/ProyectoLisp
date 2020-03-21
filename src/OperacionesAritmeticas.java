@@ -18,7 +18,6 @@ public class OperacionesAritmeticas {
 	private double resultadoNumerico=0.0;
 	private int largo=0;
 	
-	
 	@SuppressWarnings("unchecked")
 	/**
 	 * Metodo para obtener el numero de respuesta
