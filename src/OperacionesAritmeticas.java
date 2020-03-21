@@ -8,7 +8,8 @@ import java.util.Stack;
  *@author Bryann
  *@author Diego de Jesus
  *@author Javier Hernandez
- *
+ *Referencias:
+ *https://stackoverflow.com/questions/197986/what-causes-javac-to-issue-the-uses-unchecked-or-unsafe-operations-warning
  */
 public class OperacionesAritmeticas {
 	/**

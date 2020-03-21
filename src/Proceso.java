@@ -6,6 +6,8 @@ import java.util.List;
  * @author Bryann
  * @author Diego de Jesus
  * @author Javier Hernandez
+ * Referencia:
+ * https://stackoverflow.com/questions/197986/what-causes-javac-to-issue-the-uses-unchecked-or-unsafe-operations-warning
  *
  */
 public class Proceso {

@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
  * @author Diego de Jesus
  * @author Javier Hernandez
  *
+ *Referencias:
+ *https://www.geeksforgeeks.org/collections-list-method-in-java-with-examples/
+ *http://www.sc.ehu.es/sbweb/fisica/cursoJava/fundamentos/colecciones/stringtokenizer.htm
+ *https://www.geeksforgeeks.org/stream-in-java/
  */
 public class ControladorInstrucciones {
 	/**
